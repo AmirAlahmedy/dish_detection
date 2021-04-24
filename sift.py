@@ -13,7 +13,10 @@ img = cv2.equalizeHist(img)
 # apply Canny filter
 edges = cv2.Canny(img, 100, 200)
 
-# Initiate SIFT detector
+show_images([img, edges], ['Original', 'Edge Image'])
+
+
+# Initiate SIFT detector---------------------------------------------------------------------------------------
 sift = cv2.SIFT()
 
 # find the keypoints and descriptors with SIFT
@@ -59,6 +62,6 @@ draw_params = dict(matchColor=(0, 255, 0),  # draw matches in green color
 
 img3 = cv2.drawMatches(img, kp1, edges, kp2, good, None, **draw_params)
 
+show_images([img3])
 plt.imshow(img3, 'gray'), plt.show()
 
-show_images([img, edges], ['Original', 'Edge Image'])
